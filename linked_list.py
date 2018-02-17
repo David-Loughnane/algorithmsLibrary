@@ -68,7 +68,20 @@ class LinkedList(object):
             current = current.next
 
 
-# Test cases
+class Stack(object):
+    def __init__(self, top=None):
+        self.ll = LinkedList(top)
+
+    def push(self, new_element):
+        "Push (add) a new element onto the top of the stack"
+        self.ll.insert_first(new_element)
+
+    def pop(self):
+        "Pop (remove) the first element off the top of the stack and return it"
+        return self.ll.delete_first()
+
+
+# Test Linked List
 e1 = Element(1)
 e2 = Element(2)
 e3 = Element(3)
@@ -90,3 +103,21 @@ ll.delete(1)
 assert ll.get_position(1).value == 2
 assert ll.get_position(2).value == 4
 assert ll.get_position(3).value == 3
+
+
+# Test Stack
+e1 = Element(1)
+e2 = Element(2)
+e3 = Element(3)
+e4 = Element(4)
+stack = Stack(e1)
+
+# Test stack functionality
+stack.push(e2)
+stack.push(e3)
+assert stack.pop().value == 3
+assert stack.pop().value == 2
+assert stack.pop().value == 1
+assert stack.pop() is None
+stack.push(e4)
+assert stack.pop().value == 4
