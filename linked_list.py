@@ -67,6 +67,20 @@ class LinkedList(object):
         else:
             current = current.next
 
+    def insert_first(self, new_element):
+        "Insert new element as the head of the LinkedList"
+        new_element.next = self.head
+        self.head = new_element
+
+    def delete_first(self):
+        "Delete the first (head) element in the LinkedList as return it"
+        if self.head is None:
+            return None
+        else:
+            deleted = self.head
+            self.head = self.head.next
+            return deleted
+
 
 class Stack(object):
     def __init__(self, top=None):
