@@ -95,6 +95,20 @@ class Stack(object):
         return self.ll.delete_first()
 
 
+class Queue:
+    def __init__(self, head=None):
+        self.storage = [head]
+
+    def enqueue(self, new_element):
+        return self.storage.append(new_element)
+
+    def peek(self):
+        return self.storage[0]
+
+    def dequeue(self):
+        return self.storage.pop(0)
+
+
 # Test Linked List
 e1 = Element(1)
 e2 = Element(2)
@@ -135,3 +149,19 @@ assert stack.pop().value == 1
 assert stack.pop() is None
 stack.push(e4)
 assert stack.pop().value == 4
+
+# Test FIFO queue
+q = Queue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+assert q.peek() == 1
+assert q.dequeue() == 1
+
+q.enqueue(4)
+assert q.dequeue() == 2
+assert q.dequeue() == 3
+assert q.dequeue() == 4
+
+q.enqueue(5)
+assert q.peek() == 5
